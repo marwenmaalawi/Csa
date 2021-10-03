@@ -1,0 +1,7 @@
+<div *ngFor="let f of list">
+  <fieldset *ngIf="f.idFournisseur<=100" [style.background-color]="getbgColor(f)" (dblclick)="delete(f)">
+    <legend>IdFournisseur: {{f.idFournisseur}}</legend>
+    <label [style.font-weight]="getColor(f)">Code: {{f.code}}</label><br>
+    <label>Libelle: {{f.libelle}}</label>
+  </fieldset>
+</div>
