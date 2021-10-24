@@ -1,0 +1,34 @@
+<input type="text" name="category" class="form-control" [(ngModel)]="inputCategory">
+<h1>{{inputCategory}}</h1>
+<div class="row">
+  <table>
+    <tr>
+      <th>picture</th>
+      <th>IdUser</th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>birthDate</th>
+      <th>email</th>
+      <th>password</th>
+      <th>category</th>
+      <th>profession</th>
+    </tr>
+    <tr *ngFor="let user of list " [style.background-color]="getColor(user)" [hidden]=" user.accountCategory.includes(inputCategory) && inputCategory  " >
+      <td><img src="{{user.picture}}" id="picture"></td>
+
+      <td>{{user.idUser}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.birthDate}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.accountCategory}}</td>
+
+      <td>{{user.profession}}</td>
+      <td><button class="btn btn-danger" (click)="delete(user)" [disabled]="user.accountCategory=='Admin'">delete</button></td>
+      <td><button class="btn btn-danger" (click)="delete(user)" [hidden]="user.accountCategory=='Admin'">delete1</button></td>
+      <td><button class="btn btn-danger" (click)="delete(user)" *ngIf="user.accountCategory!='Admin'">delete2</button></td>
+
+    </tr>
+  </table>
+</div>

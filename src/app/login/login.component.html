@@ -1,0 +1,39 @@
+<h1>Login</h1>
+<form class="w-50 mx-auto" [formGroup]="myForm" (ngSubmit)="login(myForm)">
+
+  <div class="aler alert-danger" *ngIf="myForm.controls['confirmPsw'].value!=myForm.controls['psw'].value && myForm.controls['confirmPsw'].dirty">*password  and confirm don't match</div>
+
+  <div class="form-group" >
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email" >
+  </div>
+  <div class="aler alert-danger" *ngIf="myForm.controls['email'].invalid && myForm.controls['email'].touched">
+  <div *ngIf="myForm.controls['email'].hasError('required')">msg error required</div>
+    <div *ngIf="myForm.controls['email'].hasError('minlength')">msg error minlength</div>
+    <div *ngIf="myForm.controls['email'].hasError('email')">msg error minlength</div>
+  </div>
+
+  <br>
+  <div class="form-group" >
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="psw">
+  </div>
+
+  <div class="aler alert-danger" *ngIf="myForm.controls['psw'].invalid && myForm.controls['psw'].touched">msg error required</div>
+  <br>
+
+  <div class="form-group" >
+    <label>Confirm Password</label>
+    <input type="password"  class="form-control" formControlName="confirmPsw" [disabled]="myForm.controls['psw'].untouched" >
+  </div>
+  <div class="aler alert-danger" *ngIf="myForm.controls['confirmPsw'].invalid && myForm.controls['confirmPsw'].touched">msg error required</div>
+
+  <br>
+
+  <br>
+
+
+  <button class="btn btn-outline-success" [disabled]="myForm.invalid"  >Connect</button>
+  &nbsp;
+  <button class=" btn btn-outline-warning" >Reset</button>
+</form>
